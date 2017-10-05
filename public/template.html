@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>RetweetSearcher</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">RetweetSearcher</a>
+  </nav>
+  <div class="container">
+    <p class="lead my-3"><em>「<?php echo $text; ?>」</em>の検索結果</p>
+    <p><?php echo count($r); ?> 件のリツイート</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>ID</th>
+          <th>日時</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($r as $i => $status) : ?>
+        <tr>
+          <td><?php echo ($i + 1); ?></td>
+          <td><?php echo $status->id_str; ?></td>
+          <td><?php echo date('Y/m/d H:i:s', strtotime($status->created_at)); ?></td>
+        </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

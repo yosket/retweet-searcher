@@ -9,29 +9,19 @@
 </head>
 <body>
   <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">RetweetSearcher</a>
+    <a class="navbar-brand" href="/">RetweetSearcher</a>
   </nav>
   <div class="container">
-    <p class="lead my-3"><em>「<?php echo $text; ?>」</em>の検索結果</p>
-    <p><?php echo count($r); ?> 件のリツイート</p>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>ID</th>
-          <th>日時</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($r as $i => $status) : ?>
-        <tr>
-          <td><?php echo ($i + 1); ?></td>
-          <td><?php echo $status->id_str; ?></td>
-          <td><?php echo date('Y/m/d H:i:s', strtotime($status->created_at)); ?></td>
-        </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+    <form action="/" method="post" class="my-3">
+      <div class="form-row">
+        <div class="col">
+          <input type="url" class="form-control" name="url" placeholder="対象ツイートのURL">
+        </div>
+        <div class="col-2">
+          <button type="submit" class="btn btn-primary btn-block">検索</button>
+        </div>
+      </div>
+    </form>
   </div>
 </body>
 </html>
